@@ -9,7 +9,10 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">
+        <span class="navbar-brand-open text-secondary">Otevreny</span><span class="navbar-brand-source text-primary">Kod</span>
+    </a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -35,7 +38,9 @@
 </nav>
 
 <div class="container-fluid">
-    {% block body %}{% endblock %}
+    <div class="row">
+        {% block body %}{% endblock %}
+    </div>
 </div>
 
 <script href="{{ asset('js/bootstrap.min.js') }}"></script>
