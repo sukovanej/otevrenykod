@@ -1,0 +1,9 @@
+{% extends "admin/base.html.twig" %}
+
+{% form_theme edit_form "form/bootstrap_3_horizontal_layout.html.twig" %}
+
+{% block content %}
+    <div class="col-12">
+        {{ form(edit_form) }}
+    </div>
+{% endblock %}

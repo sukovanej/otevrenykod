@@ -26,6 +26,24 @@ class User extends \FOS\UserBundle\Model\User {
     protected $id;
 
     /**
+     * @var Content[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Content", mappedBy="content")
+     */
+    private $contents;
+
+    /**
+     * @var Category[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Category", mappedBy="author")
+     */
+    private $categories;
+
+    /**
+     * @var Tag[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Tag", mappedBy="author")
+     */
+    private $tags;
+
+    /**
      * User constructor.
      */
     public function __construct() {

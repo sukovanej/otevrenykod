@@ -1,2 +1,13 @@
 admin:
     administration: "Administrace"
+    add_content: 'Přidat obsah'
+    publish: "Publikovat"
+
+general:
+    content: "Obsah"
+    author: "Autor"
+    created: "Vytvořeno"
+    published: "Publikováno"
+
+message:
+    not_image: "Chybí obrázek"

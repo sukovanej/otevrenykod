@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+{% form_theme upload_form 'form/bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <div class="row">
+                    {{ form(upload_form) }}
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                {{ form_start(delete_form) }}
+
+                {% do delete_form.delete.setRendered %}
+                {% do delete_form.idList.setRendered %}
+
+                <div class="btn-group pull-right" role="group" aria-label="Basic example">
+                    <button type="submit" id="delete_form_delete" name="delete_form[delete]"
+                            class="btn btn-danger">
+                        <i class="fa fa-trash fa-fw" aria-hidden="true"></i>
+                        {{ "general.delete"|trans }}
+                    </button>
+                </div>
+
+                <h3>{{ "admin.images"|trans }}</h3>
+
+                <div style="max-height: 500px; overflow-y: scroll;">
+                    {# @var image \AppBundle\Entity\Image #}
+                    {% for image in image_list %}
+                        <label>
+                            <input type="checkbox" id="image_delete_form_idList_{{ image.id }}"
+                                   name="image_delete_form[idList][{{ image.id }}]" value="{{ image.id }}"/>
+
+                            <img style="height: 100px;" src="{{ path('img_generator', {"id": image.id}) }}"
+                                 class="img-thumbnail">
+                        </label>
+                    {% endfor %}
+                </div>
+
+                {{ form_end(delete_form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

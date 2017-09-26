@@ -1,0 +1,18 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <ul class="nav admin-nav">
+        <li class="nav-item">
+            <a href="{{ path('admin') }}">
+                {{ "admin.administration"|trans }}
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="{{ path('admin_content_add') }}">
+                {{ "admin.add_content"|trans }}
+            </a>
+        </li>
+    </ul>
+
+    {% block content %}{% endblock %}
+{% endblock %}
