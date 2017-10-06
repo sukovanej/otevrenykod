@@ -21,4 +21,13 @@ class ContentRepository extends EntityRepository {
         $em->persist($content);
         $em->flush();
     }
+
+    /**
+     * @param Content $content
+     */
+    public function merge(Content $content) {
+        $em = $this->getEntityManager();
+        $em->merge($content);
+        $em->flush();
+    }
 }

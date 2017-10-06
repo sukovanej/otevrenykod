@@ -8,6 +8,52 @@
     padding: 5px;
 }
 
+.main-container {
+    margin-top: 20px;
+}
+
 .logo-otevrenykod {
     height: 35px;
+}
+
+.card-article-img img {
+    height: 100%;
+    width: 100%;
+}
+
+.pull-left {
+    float: left;
+}
+
+.pull-right {
+    float: right;
+}
+
+.card-body-article {
+    padding: 30px 0px;
+    padding-right: 20px;
+}
+
+.header-title {
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.continue-button {
+    position: relative;
+    top: -5px;
+}
+
+.article-info {
+    font-size: 13px;
+    color: #aaa;
+    margin-bottom: 10px;
+}
+
+footer {
+    margin-top: 40px;
+    text-align: center;
 }

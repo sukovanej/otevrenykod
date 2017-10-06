@@ -11,6 +11,8 @@ namespace AppBundle\Model;
 
 use AppBundle\Entity\Content;
 use AppBundle\Repository\ContentRepository;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ContentModel extends EntityManagerModel {
     /**
@@ -18,6 +20,27 @@ class ContentModel extends EntityManagerModel {
      */
     public function getContentRepository(): ContentRepository {
         return $this->getEntityManager()->getRepository(Content::class);
+    }
+
+    /**
+     * @param Content $content
+     */
+    public function merge(Content $content) {
+        $file = $content->getImageFileObject();
+
+
+        if ($file instanceof UploadedFile && $file->isValid()) {
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+
+            $file->move(
+                __DIR__ . "/../../../web/img/article",
+                $fileName
+            );
+
+            $content->setImage($fileName);
+        }
+
+        $this->getContentRepository()->merge($content);
     }
 
     /**

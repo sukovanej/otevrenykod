@@ -19,7 +19,7 @@ use AppBundle\Model\PublishedModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 
 class ContentController extends Controller {
     /**
@@ -54,7 +54,7 @@ class ContentController extends Controller {
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-
+            $contentModel->merge($content);
         }
 
         return $this->render("admin/content/edit.html.twig", [
@@ -66,7 +66,7 @@ class ContentController extends Controller {
     /**
      * @Route("admin/content/publish/{id}", name="admin_content_publish")
      */
-    public function publish($id, ContentModel $contentModel, PublishedModel $publishedModel, Translator $trans,
+    public function publish($id, ContentModel $contentModel, PublishedModel $publishedModel, TranslatorInterface $trans,
                             Request $request) {
         $content = $contentModel->getById($id);
         $messages = [];
@@ -78,10 +78,13 @@ class ContentController extends Controller {
         $publishForm->handleRequest($request);
 
         if ($publishForm->isSubmitted() && $publishForm->isValid()) {
-            if (!($content->getImage() instanceof Image)) {
+            if (empty(($content->getImage()))) {
                 $messages[] = ["danger", $trans->trans("message.not_image")];
             } else {
                 $publishedModel->save($published);
+
+                $this->addFlash("success", $trans->trans("message.published_success"));
+                return $this->redirectToRoute("admin");
             }
         }
 

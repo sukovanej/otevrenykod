@@ -21,4 +21,14 @@ class PublishedRepository extends EntityRepository {
         $em->persist($published);
         $em->flush();
     }
+
+    /**
+     * @return Published[]
+     */
+    public function findPublished() {
+        $q = $this->getEntityManager()
+            ->createQuery("SELECT e, f FROM AppBundle:Published e JOIN e.content f WHERE e.datetime <= CURRENT_TIMESTAMP()");
+
+        return $q->getResult();
+    }
 }

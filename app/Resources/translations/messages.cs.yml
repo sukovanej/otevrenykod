@@ -8,6 +8,7 @@ general:
     author: "Autor"
     created: "Vytvořeno"
     published: "Publikováno"
+    continue_reading: "Číst dále"
 
 message:
     not_image: "Chybí obrázek"

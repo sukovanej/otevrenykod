@@ -24,6 +24,9 @@ class ContentAddFormType extends AbstractType {
             ->add("title", TextType::class)
             ->add("perex", TextAreaType::class)
             ->add("content", TextAreaType::class)
+            ->add("imageFileObject", FileType::class, [
+                "required" => false
+            ])
             ->add("submit", SubmitType::class)
         ;
     }

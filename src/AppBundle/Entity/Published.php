@@ -27,7 +27,8 @@ class Published {
 
     /**
      * @var Content
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Content", mappedBy="published")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Content", inversedBy="published")
+     * @ORM\JoinColumn(name="published_id", referencedColumnName="id")
      */
     private $content;
 

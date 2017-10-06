@@ -9,6 +9,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -52,10 +54,15 @@ class Content {
     private $perex;
 
     /**
-     * @var Image
+     * @var File
      * @ORM\Column(type="string")
      */
     private $image;
+
+    /**
+     * @var UploadedFile
+     */
+    private $imageFileObject;
 
     /**
      * @var Tag[]
@@ -80,8 +87,7 @@ class Content {
 
     /**
      * @var Published
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Published", inversedBy="content")
-     * @ORM\JoinColumn(name="published_id", referencedColumnName="id")
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Published", mappedBy="content")
      */
     private $published;
 
@@ -160,7 +166,7 @@ class Content {
     }
 
     /**
-     * @return Image
+     * @return File
      */
     public function getImage() {
         return $this->image;
@@ -227,6 +233,20 @@ class Content {
      */
     public function setPublished($published) {
         $this->published = $published;
+    }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getImageFileObject() {
+        return $this->imageFileObject;
+    }
+
+    /**
+     * @param File $imageFileObject
+     */
+    public function setImageFileObject($imageFileObject) {
+        $this->imageFileObject = $imageFileObject;
     }
 
 }

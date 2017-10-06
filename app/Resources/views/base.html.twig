@@ -58,6 +58,15 @@
     {% endif %}
 
     {% block body %}{% endblock %}
+
+    <footer>
+        <div class="container-fluid">
+            <p class="footer">
+                Created with <img class="text-danger" src="{{ asset('svg/heart.svg') }}"/>
+                and <a href="https://symfony.com/">Symfony</a> framework. By <a href="http://milansuk.cz/">Milan Suk</a>
+            </p>
+        </div>
+    </footer>
 </div>
 
 <script href="{{ asset('js/bootstrap.min.js') }}"></script>

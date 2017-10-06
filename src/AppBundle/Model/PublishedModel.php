@@ -20,7 +20,27 @@ class PublishedModel extends EntityManagerModel {
         return $this->getEntityManager()->getRepository(Published::class);
     }
 
+    /**
+     * @param Published $published
+     */
     public function save(Published $published) {
         $this->getPublishedRepository()->save($published);
+    }
+
+    /**
+     * @return Published[]
+     */
+    public function getList() {
+        return $this->getPublishedRepository()->findPublished();
+    }
+
+    /**
+     * @param $url
+     * @return null|object
+     */
+    public function getByUrl($url) {
+        /** @var Published $published */
+        $published = $this->getPublishedRepository()->findOneBy(["url" => $url]);
+        return $published->getContent();
     }
 }
