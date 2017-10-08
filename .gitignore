@@ -3,7 +3,6 @@
 /build/
 /phpunit.xml
 /var/*
-!/var/cache
 /var/cache/*
 !var/cache/.gitkeep
 !/var/logs
@@ -21,7 +20,6 @@ README.md
 app/config/config_prod.yml
 app/config/config_test.yml
 app/config/parameters.yml.dist
-app/config/routing_dev.yml
 composer.lock
 phpunit.xml.dist
 src/.htaccess
