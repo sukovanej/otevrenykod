@@ -9,7 +9,7 @@
 }
 
 .main-container {
-    margin-top: 20px;
+    margin-top: 100px;
 }
 
 .logo-otevrenykod {
@@ -56,4 +56,18 @@
 footer {
     margin-top: 40px;
     text-align: center;
+}
+
+.navbar-fixed-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #ddd;
+    z-index: 100;
+}
+
+.navbar-brand {
+    font-size: 22px;
+    text-transform: capitalize;
 }

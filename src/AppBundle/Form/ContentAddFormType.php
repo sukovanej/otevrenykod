@@ -10,6 +10,7 @@ namespace AppBundle\Form;
 
 
 use AppBundle\Entity\Content;
+use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -23,12 +24,14 @@ class ContentAddFormType extends AbstractType {
         $builder
             ->add("title", TextType::class)
             ->add("perex", TextAreaType::class)
-            ->add("content", TextAreaType::class)
+            ->add("content", AceEditorType::class, [
+                'mode' => 'ace/mode/html',
+                'theme' => 'ace/theme/github',
+            ])
             ->add("imageFileObject", FileType::class, [
                 "required" => false
             ])
-            ->add("submit", SubmitType::class)
-        ;
+            ->add("submit", SubmitType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver) {
