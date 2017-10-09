@@ -81,3 +81,7 @@ footer {
 .card-image-new img {
     height: 100%;
 }
+
+.col-lg-12 > .card-body-article > p, h4 {
+    padding-left: 1.25rem;
+}
