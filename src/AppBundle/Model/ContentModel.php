@@ -28,7 +28,6 @@ class ContentModel extends EntityManagerModel {
     public function merge(Content $content) {
         $file = $content->getImageFileObject();
 
-
         if ($file instanceof UploadedFile && $file->isValid()) {
             $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
@@ -47,16 +46,21 @@ class ContentModel extends EntityManagerModel {
      * @param Content $content
      */
     public function save(Content $content) {
-        /** @var Symfony\Component\HttpFoundation\File\UploadedFile $file */
-        $file = $content->getImage();
-        $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+        $file = $content->getImageFileObject();
 
-        $file->move(
-            "../../../web/img/article",
-            $fileName
-        );
+        if ($file instanceof UploadedFile && $file->isValid()) {
+            $fileName = md5(uniqid()) . '.' . $file->guessExtension();
 
-        $content->getImage($fileName);
+            $file->move(
+                __DIR__ . "/../../../web/img/article",
+                $fileName
+            );
+
+            $content->setImage($fileName);
+        } else {
+            $content->setImage("");
+        }
+
         $this->getContentRepository()->save($content);
     }
 
