@@ -32,7 +32,7 @@
     </div>
 </nav>
 
-<div class="container-fluid">
+<div class="container-fluid main-container">
     {% for label, messages in app.flashes(['warning', 'error']) %}
         {% for message in messages %}
             <div class="alert alert-{{ label }}">
