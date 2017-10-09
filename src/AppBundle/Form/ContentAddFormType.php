@@ -12,6 +12,7 @@ namespace AppBundle\Form;
 use AppBundle\Entity\Content;
 use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -23,6 +24,13 @@ class ContentAddFormType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add("title", TextType::class)
+            ->add("type", ChoiceType::class, [
+                "choices" => ([
+                    "content_type." . Content::TYPE_ARTICLE => Content::TYPE_ARTICLE,
+                    "content_type." . Content::TYPE_NEWS => Content::TYPE_NEWS,
+                ]),
+                "choice_translation_domain" => "messages"
+            ])
             ->add("perex", TextAreaType::class)
             ->add("content", AceEditorType::class, [
                 'mode' => 'ace/mode/html',

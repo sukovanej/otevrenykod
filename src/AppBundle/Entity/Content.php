@@ -20,6 +20,14 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="content")
  */
 class Content {
+    const TYPE_ARTICLE = 0;
+    const TYPE_NEWS = 1;
+
+    /**
+     * @var array
+     */
+    private $types = [];
+
     /**
      * @var int
      * @ORM\Id()
@@ -40,6 +48,12 @@ class Content {
      * @ORM\Column(type="text")
      */
     private $title;
+
+    /**
+     * @var int
+     * @ORM\Column(type="integer")
+     */
+    private $type;
 
     /**
      * @var string
@@ -93,6 +107,25 @@ class Content {
 
     public function __construct() {
         $this->created = new \DateTime();
+
+        self::setTypes([
+            "content_type." . self::TYPE_ARTICLE => self::TYPE_ARTICLE,
+            "content_type." . self::TYPE_NEWS => self::TYPE_NEWS,
+        ]);
+    }
+
+    /**
+     * @return array
+     */
+    public function getTypes() {
+        return $this->types;
+    }
+
+    /**
+     * @param array $types
+     */
+    public function setTypes($types) {
+        $this->types = $types;
     }
 
     /**
@@ -247,6 +280,20 @@ class Content {
      */
     public function setImageFileObject($imageFileObject) {
         $this->imageFileObject = $imageFileObject;
+    }
+
+    /**
+     * @return int
+     */
+    public function getType() {
+        return $this->type;
+    }
+
+    /**
+     * @param int $type
+     */
+    public function setType($type) {
+        $this->type = $type;
     }
 
 }

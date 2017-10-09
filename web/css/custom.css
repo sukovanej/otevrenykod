@@ -3,9 +3,7 @@
 }
 
 .admin-nav {
-    background-color: #eee;
     margin-bottom: 15px;
-    padding: 5px;
 }
 
 .main-container {
@@ -70,4 +68,16 @@ footer {
 .navbar-brand {
     font-size: 22px;
     text-transform: capitalize;
+}
+
+.admin-nav > li {
+    margin-right: 10px;
+}
+
+.admin-nav > li img {
+    filter: brightness(0) invert(1);
+}
+
+.card-image-new img {
+    height: 100%;
 }

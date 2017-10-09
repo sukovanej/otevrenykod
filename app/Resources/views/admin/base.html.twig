@@ -3,12 +3,14 @@
 {% block body %}
     <ul class="nav admin-nav">
         <li class="nav-item">
-            <a href="{{ path('admin') }}">
+            <a class="btn btn-primary text-white" href="{{ path('admin') }}">
+                <img src="{{ asset('svg/home.svg') }}" class="text-white" />
                 {{ "admin.administration"|trans }}
             </a>
         </li>
         <li class="nav-item">
-            <a href="{{ path('admin_content_add') }}">
+            <a class="btn btn-success" href="{{ path('admin_content_add') }}">
+                <img src="{{ asset('svg/pencil.svg') }}" />
                 {{ "admin.add_content"|trans }}
             </a>
         </li>

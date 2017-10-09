@@ -1,0 +1,28 @@
+<div class="card">
+    <div class="row">
+        <div class="col-xl-3 col-lg-12">
+            <div class="card-article-img">
+                <a href="{{ path('content', { url: published.url }) }}">
+                    <img src="{{ asset('img/article/') }}{{ published.content.image }}"/>
+                </a>
+            </div>
+        </div>
+        <div class="col-xl-9 col-lg-12">
+            <div class="card-body card-body-article">
+                <h4 class="card-title">
+                    <span class="btn btn-success btn-sm">
+                        {{ "content_type.0"|trans }}
+                    </span>
+                    {{ published.content.title }}
+                    <div class="float-right">
+
+                        <a href="{{ path('content', { url: published.url }) }}"
+                           class="btn btn-sm btn-primary">
+                            {{ "general.continue_reading"|trans }}</a>
+                    </div>
+                </h4>
+                <p class="card-text">{{ published.content.perex }}</p>
+            </div>
+        </div>
+    </div>
+</div>

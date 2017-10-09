@@ -11,7 +11,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Published;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -21,7 +21,7 @@ class ContentPublishFormType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $builder
             ->add("url", TextType::class)
-            ->add("datetime", DateType::class)
+            ->add("datetime", DateTimeType::class)
             ->add("submit", SubmitType::class);
     }
 

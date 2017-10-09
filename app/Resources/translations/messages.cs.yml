@@ -10,5 +10,9 @@ general:
     published: "Publikováno"
     continue_reading: "Číst dále"
 
+content_type:
+    0: "Článek"
+    1: "Novinka"
+
 message:
     not_image: "Chybí obrázek"
