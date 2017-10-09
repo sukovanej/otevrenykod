@@ -1,2 +1,2 @@
 #!/bin/bash
-ssh root@milansuk.cz < deploy_server.sh
+ssh -q root@milansuk.cz < deploy_server.sh
