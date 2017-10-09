@@ -5,29 +5,31 @@
 {% endblock %}
 
 {% block body %}
-    <h1 class="header-title">{{ content.title }}</h1>
+    <div class="container">
+        <h1 class="header-title">{{ content.title }}</h1>
 
-    <div class="row">
-        <div class="col-xl-2">
-            <div class="card-article-img">
-                <img src="{{ asset('img/article/') }}{{ content.image }}"/>
+        <div class="row">
+            <div class="col-xl-2">
+                <div class="card-article-img">
+                    <img src="{{ asset('img/article/') }}{{ content.image }}"/>
+                </div>
+            </div>
+            <div class="col-xl-10">
+                <div class="article-info">
+                    {{ content.created|date("d. m. Y") }},
+                    <a href="">{{ content.author.username }}</a>
+                </div>
+
+                {{ content.perex }}
             </div>
         </div>
-        <div class="col-xl-10">
-            <div class="article-info">
-                {{ content.created|date("d. m. Y") }},
-                <a href="">{{ content.author.username }}</a>
-            </div>
 
-            {{ content.perex }}
-        </div>
+        <br>
+        <hr/>
+        <br>
+
+        {{ content.content|raw }}
     </div>
-
-    <br>
-    <hr/>
-    <br>
-
-    {{ content.content|raw }}
 {% endblock %}
 
 {% block javascripts %}
