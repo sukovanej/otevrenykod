@@ -43,26 +43,26 @@ class Content {
 
     /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $content;
+    private $content = null;
 
     /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
-    private $perex;
+    private $perex = null;
 
     /**
      * @var File
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", nullable=true)
      */
-    private $image;
+    private $image = null;
 
     /**
      * @var UploadedFile
      */
-    private $imageFileObject;
+    private $imageFileObject = null;
 
     /**
      * @var Tag[]
