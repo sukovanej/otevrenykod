@@ -3,7 +3,7 @@
         <div class="card">
             <div class="row">
                 {% if published.content.image != "" %}
-                <div class="col-xl-1 col-lg-12">
+                <div class="col-xl-2 col-lg-12">
                     <div class="card-article-img">
                         <a href="{{ path('content', { url: published.url }) }}">
                             <img src="{{ asset('img/article/') }}{{ published.content.image }}"/>
@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 {% endif %}
-                <div class="{% if published.content.image == "" %}col-xl-12{% else %}col-xl-11{% endif %} col-lg-12">
+                <div class="{% if published.content.image == "" %}col-xl-12{% else %}col-xl-10{% endif %} col-lg-12">
                     <div class="card-body card-body-new">
                         <h5 class="card-title">
                             <span class="btn btn-danger btn-sm">{{ "content_type.1"|trans }}</span>
