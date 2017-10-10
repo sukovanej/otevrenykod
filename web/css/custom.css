@@ -14,11 +14,10 @@
     height: 35px;
 }
 
-.card-article-img img {
-    height: 100%;
+.card-article-img img
+{
     width: 100%;
 }
-
 .pull-left {
     float: left;
 }

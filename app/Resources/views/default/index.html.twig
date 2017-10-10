@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container-fluid main-container">
         <div class="row">
-            <div class="col-xl-8">
+            <div class="col-xl-8 col-md-12">
                 {% for published in published_list %}
                     {% if published.content.type == 0 %}
                         {% include "default/content/article.html.twig" %}
