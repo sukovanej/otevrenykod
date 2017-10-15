@@ -93,4 +93,21 @@ class ContentController extends Controller {
             "messages" => $messages
         ]);
     }
+
+    /**
+     * @Route("admin/content/preview/{content_id}", name="admin_content_preview")
+     */
+    public function preview($content_id, ContentModel $contentModel) {
+        $content = $contentModel->getById($content_id);
+
+        $published = new Published();
+        $published->setContent($content);
+        $published->setUrl("ahoj");
+        $published->setDatetime(new \DateTime());
+
+        return $this->render("admin/content/preview.html.twig", [
+            "content" => $content,
+            "published" => $published
+        ]);
+    }
 }

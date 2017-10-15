@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/magula.min.css">
+{% endblock %}
+
+{% block body %}
+
+    <div class="container-fluid main-container">
+        <div class="row">
+            <div class="col-xl-8 col-md-12">
+                {% if published.content.type == 0 %}
+                    {% include "default/content/article.html.twig" %}
+                {% elseif published.content.type == 1 %}
+                    {% include "default/content/new.html.twig" %}
+                {% endif %}
+
+                <br/>
+            </div>
+        </div>
+    </div>
+
+    <br>
+    <hr>
+    <br>
+
+    <div class="container">
+        <h1 class="header-title">{{ content.title }}</h1>
+
+        <div class="row">
+            <div class="col-xl-2">
+                <div class="card-article-img">
+                    <img src="{{ asset('img/article/') }}{{ content.image }}"/>
+                </div>
+            </div>
+            <div class="col-xl-10">
+                <div class="article-info">
+                    {{ content.created|date("d. m. Y") }},
+                    <a href="">{{ content.author.username }}</a>
+                </div>
+
+                {{ content.perex }}
+            </div>
+        </div>
+
+        <br>
+        <hr/>
+        <br>
+
+        {{ content.content|raw }}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+{% endblock %}
+

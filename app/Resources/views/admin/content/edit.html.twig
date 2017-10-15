@@ -4,6 +4,8 @@
 
 {% block content %}
     <div class="col-12">
+        <a target="_blank" href="{{ path('admin_content_preview', {content_id : content.id}) }}"
+           class="btn btn-warning float-right">Zobrazit náhled</a>
         {{ form(edit_form) }}
     </div>
 {% endblock %}
