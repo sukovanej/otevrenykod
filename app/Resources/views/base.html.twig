@@ -1,13 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8"/>
-    <title>{% block title %}OtevrenyKod.cz{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
-    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}?v=2"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-108261739-1"></script>
     <script>
@@ -21,6 +14,13 @@
 
         gtag('config', 'UA-108261739-1');
     </script>
+    <meta charset="UTF-8"/>
+    <title>{% block title %}OtevrenyKod.cz{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('css/custom.css') }}"/>
+    <link rel="icon" type="image/png" href="{{ asset('img/favicon.png') }}?v=2"/>
 </head>
 <body>
 <nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
