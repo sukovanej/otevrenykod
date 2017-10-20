@@ -9,6 +9,7 @@
 namespace AppBundle\Model;
 
 
+use AppBundle\Entity\Content;
 use AppBundle\Entity\Published;
 use AppBundle\Repository\PublishedRepository;
 
@@ -36,7 +37,7 @@ class PublishedModel extends EntityManagerModel {
 
     /**
      * @param $url
-     * @return null|object
+     * @return Published
      */
     public function getByUrl($url) {
         /** @var Published $published */

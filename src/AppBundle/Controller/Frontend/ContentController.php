@@ -22,4 +22,13 @@ class ContentController extends Controller {
             "content" => $publishedModel->getByUrl($url)
         ]);
     }
+
+    /**
+     * @Route("content/{url}/comments, name="content_comments")
+     */
+    public function commentsAction(PublishedModel $publishedModel, CommentModel $commentModel, $url) {
+        $content = $publishedModel->getByUrl($url)->getContent();
+
+        return $this->render("");
+    }
 }
