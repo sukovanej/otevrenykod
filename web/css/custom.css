@@ -82,3 +82,12 @@ footer {
 .card-image-new img {
     height: 100%;
 }
+
+.comment-info {
+    font-size: 12px;
+    color: #888;
+}
+
+.display-none {
+    display:none;
+}

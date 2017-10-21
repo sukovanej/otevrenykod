@@ -15,10 +15,13 @@
                     </span>
                     {{ published.content.title }}
                     <div class="float-right">
-
                         <a href="{{ path('content', { url: published.url }) }}"
                            class="btn btn-sm btn-primary">
                             {{ "general.continue_reading"|trans }}</a>
+
+                        <a href="{{ path('content_comments', { url: published.url }) }}"
+                           class="btn btn-sm btn-danger">
+                            {{ "general.comments"|trans }} ({{ published.content.countComments }})</a>
                     </div>
                 </h4>
                 <p class="card-text">{{ published.content.perex }}</p>

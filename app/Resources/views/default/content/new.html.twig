@@ -3,13 +3,13 @@
         <div class="card">
             <div class="row">
                 {% if published.content.image != "" %}
-                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12">
-                    <div class="card-article-img">
-                        <a href="{{ path('content', { url: published.url }) }}">
-                            <img src="{{ asset('img/article/') }}{{ published.content.image }}"/>
-                        </a>
+                    <div class="col-xl-2 col-lg-2 col-md-3 col-sm-12">
+                        <div class="card-article-img">
+                            <a href="{{ path('content', { url: published.url }) }}">
+                                <img src="{{ asset('img/article/') }}{{ published.content.image }}"/>
+                            </a>
+                        </div>
                     </div>
-                </div>
                 {% endif %}
                 <div class="{% if published.content.image == "" %}col-xl-12{% else %}col-xl-10 col-lg-10 col-md-9{% endif %} col-sm-12">
                     <div class="card-body card-body-new">
@@ -21,6 +21,10 @@
                                 <a href="{{ path('content', { url: published.url }) }}"
                                    class="btn btn-sm btn-primary">
                                     {{ "general.continue_reading"|trans }}</a>
+
+                                <a href="{{ path('content_comments', { url: published.url }) }}"
+                                   class="btn btn-sm btn-danger">
+                                    {{ "general.comments"|trans }} ({{ published.content.countComments }})</a>
                             </div>
                         </h5>
                         <p class="card-text">{{ published.content.perex }}</p>

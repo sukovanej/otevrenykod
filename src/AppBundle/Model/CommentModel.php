@@ -10,6 +10,7 @@ namespace AppBundle\Model;
 
 
 use AppBundle\Entity\Comment;
+use AppBundle\Entity\Content;
 use AppBundle\Repository\CommentRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -23,10 +24,10 @@ class CommentModel extends EntityManagerModel {
     }
 
     /**
-     * @param Comment $content
+     * @param Comment $comment
      */
-    public function save(Comment $content) {
-        $this->getCommentRepository()->save($content);
+    public function save(Comment $comment) {
+        $this->getCommentRepository()->save($comment);
     }
 
     /**
@@ -37,13 +38,16 @@ class CommentModel extends EntityManagerModel {
     }
 
     /**
-     * @param Comment $content
+     * @param Content $content
      * @return Comment[]
      */
-    public function getListByComment(Comment $content) {
-        return $this->getCommentRepository()->findBy(
-            ["content" => $content]
-        );
+    public function getListByContent(Content $content) {
+        $query = $this->getCommentRepository()->createQueryBuilder("p")
+            ->where("p.id = 0")
+            ->orderBy("p.created", "ASC")
+            ->getQuery();
+
+        return $query->getResult();
     }
 
     /**

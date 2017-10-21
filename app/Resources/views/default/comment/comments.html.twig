@@ -1,38 +1,46 @@
 {% extends 'base.html.twig' %}
 
+{% form_theme add_form "form/bootstrap_3_horizontal_layout.html.twig" %}
+
 {% block stylesheets %}
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/magula.min.css">
 {% endblock %}
 
 {% block body %}
     <div class="container">
-        <h1 class="header-title">{{ content.title }}</h1>
+        <h1 class="header-title">Názory k <strong>{{ content.title }}</strong></h1>
 
-        <div class="row">
-            <div class="col-xl-2">
-                <div class="card-article-img">
-                    <img src="{{ asset('img/article/') }}{{ content.image }}"/>
-                </div>
-            </div>
-            <div class="col-xl-10">
-                <div class="article-info">
-                    {{ content.created|date("d. m. Y") }},
-                    <a href="">{{ content.author.username }}</a>
-                </div>
-
-                {{ content.perex }}
-            </div>
+        <div class="alert alert-primary display-none" id="comment-react-alert">
+            Nyní odpovídáte na komentář #<span id="comment-react-id"></span>
         </div>
 
-        <br>
-        <hr/>
-        <br>
+        {{ form(add_form) }}
 
-        {{ content.content|raw }}
+        <hr>
+
+        {% for comment in content.comments %}
+            {% include "default/comment/comment_item.html.twig" %}
+
+            {% if comment.parent is not null %}
+                {{ comment.parent.id }}
+            {% endif %}
+            <br>
+        {% endfor %}
     </div>
 {% endblock %}
 
 {% block javascripts %}
     <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
+    <script>
+        $(document).ready(function () {
+            $("span.react-btn").click(function (obj) {
+                var element = $(obj.target);
+                element.parent().parent().parent().addClass("border-danger");
+                $("#comment_add_form_parent").val(element.attr("id"));
+                $("#comment-react-id").text(element.attr("id"));
+                $("#comment-react-alert").fadeIn();
+            });
+        });
+    </script>
 {% endblock %}

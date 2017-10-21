@@ -34,6 +34,7 @@ class Comment {
 
     /**
      * @var \DateTime
+     * @ORM\Column(type="datetime")
      */
     private $created;
 
@@ -43,6 +44,12 @@ class Comment {
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", nullable=true)
      */
     private $parent;
+
+    /**
+     * @var Comment[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="parent", cascade={"remove"})
+     */
+    private $children;
 
     /**
      * @var Content
@@ -61,8 +68,9 @@ class Comment {
      * Comment constructor.
      */
     public function __construct() {
-        $this->$this->setCreated(new \DateTime());
+        $this->setCreated(new \DateTime());
     }
+
 
     /**
      * @return int
@@ -146,5 +154,19 @@ class Comment {
      */
     public function setText($text) {
         $this->text = $text;
+    }
+
+    /**
+     * @return Comment[]
+     */
+    public function getChildren() {
+        return $this->children;
+    }
+
+    /**
+     * @param Comment[] $children
+     */
+    public function setChildren($children) {
+        $this->children = $children;
     }
 }

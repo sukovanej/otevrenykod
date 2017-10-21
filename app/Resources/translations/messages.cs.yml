@@ -9,6 +9,7 @@ general:
     created: "Vytvořeno"
     published: "Publikováno"
     continue_reading: "Číst dále"
+    comments: "Názory"
 
 content_type:
     0: "Článek"

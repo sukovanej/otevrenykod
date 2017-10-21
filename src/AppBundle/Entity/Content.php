@@ -105,6 +105,12 @@ class Content {
      */
     private $published;
 
+    /**
+     * @var Comment[]
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Comment", mappedBy="content")
+     */
+    private $comments;
+
     public function __construct() {
         $this->created = new \DateTime();
 
@@ -112,6 +118,20 @@ class Content {
             "content_type." . self::TYPE_ARTICLE => self::TYPE_ARTICLE,
             "content_type." . self::TYPE_NEWS => self::TYPE_NEWS,
         ]);
+    }
+
+    public function getCountComments($object = null) {
+        if ($object == null)
+            $object = $this->getComments();
+
+        $counter = 0;
+
+        foreach ($object as $item) {
+            $counter += $this->getCountComments($item->getChildren());
+            $counter++;
+        }
+
+        return $counter;
     }
 
     /**
@@ -294,6 +314,20 @@ class Content {
      */
     public function setType($type) {
         $this->type = $type;
+    }
+
+    /**
+     * @return Comment[]
+     */
+    public function getComments() {
+        return $this->comments;
+    }
+
+    /**
+     * @param Comment[] $comments
+     */
+    public function setComments($comments) {
+        $this->comments = $comments;
     }
 
 }
