@@ -23,7 +23,7 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class ContentController extends Controller {
     /**
-     * @Route("admin/content/add", name="admin_content_add")
+     * @Route("admin/obsah/pridat", name="admin_content_add")
      * @param ContentModel $contentModel
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -48,7 +48,7 @@ class ContentController extends Controller {
     }
 
     /**
-     * @Route("admin/content/edit/{id}", name="admin_content_edit")
+     * @Route("admin/obsah/upravit/{id}", name="admin_content_edit")
      */
     public function edit($id, ContentModel $contentModel, Request $request) {
         $content = $contentModel->getById($id);
@@ -67,7 +67,7 @@ class ContentController extends Controller {
     }
 
     /**
-     * @Route("admin/content/publish/{id}", name="admin_content_publish")
+     * @Route("admin/obsah/publikovat/{id}", name="admin_content_publish")
      */
     public function publish($id, ContentModel $contentModel, PublishedModel $publishedModel, TranslatorInterface $trans,
                             Request $request) {
@@ -98,7 +98,7 @@ class ContentController extends Controller {
     }
 
     /**
-     * @Route("admin/content/preview/{content_id}", name="admin_content_preview")
+     * @Route("admin/obsah/preview/{content_id}", name="admin_content_preview")
      */
     public function preview($content_id, ContentModel $contentModel) {
         $content = $contentModel->getById($content_id);

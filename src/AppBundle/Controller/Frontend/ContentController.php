@@ -20,8 +20,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ContentController extends Controller {
+
     /**
-     * @Route("content/{url}", name="content")
+     * @Route("obsah/{url}", name="content")
      */
     public function indexAction(PublishedModel $publishedModel, $url) {
         return $this->render(":default:content.html.twig", [
@@ -30,10 +31,10 @@ class ContentController extends Controller {
     }
 
     /**
-     * @Route("content/{url}/comments", name="content_comments")
+     * @Route("obsah/{url}/nazory", name="content_comments")
      */
     public function commentsAction(UserModel $userModel, PublishedModel $publishedModel, CommentModel $commentModel,
-                                   Request $request, $url) {
+                                             Request $request, $url) {
         $content = $publishedModel->getByUrl($url);
 
         $comment = new Comment();
@@ -70,4 +71,20 @@ class ContentController extends Controller {
             "add_form" => $addCommentForm->createView()
         ]);
     }
+
+    /**
+     * @Route("content/{url}/comments", name="content_comments_deprecated")
+     */
+    public function commentsActionDeprecated(UserModel $userModel, PublishedModel $publishedModel, CommentModel $commentModel,
+                                   Request $request, $url) {
+        return $this->commentsAction($userModel, $publishedModel, $commentModel, $request, $url);
+    }
+
+    /**
+     * @Route("content/{url}", name="content_deprecated")
+     */
+    public function indexActionDeprecated(PublishedModel $publishedModel, $url) {
+        return $this->indexAction($publishedModel, $url);
+    }
+
 }
