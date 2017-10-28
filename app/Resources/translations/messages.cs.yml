@@ -20,3 +20,4 @@ message:
     not_image: "Chybí obrázek"
     content_created: "Nový obsah byl úspěšně vytvořen. Můžete pokračovat v úpravách."
     published_success: "Obsah byl publikován!"
+    url_used: "Vybraná URL adresa je již využívána!"

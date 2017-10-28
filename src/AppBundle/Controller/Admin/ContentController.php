@@ -83,7 +83,13 @@ class ContentController extends Controller {
         if ($publishForm->isSubmitted() && $publishForm->isValid()) {
             if (empty(($content->getImage())) && $content->getType() == Content::TYPE_ARTICLE) {
                 $messages[] = ["danger", $trans->trans("message.not_image")];
-            } else {
+            }
+
+            if ($publishedModel->getByUrl($published->getUrl()) instanceof Published) {
+                $messages[] = ["danger", $trans->trans("message.url_used")];
+            }
+
+            if (empty($messages)) {
                 $publishedModel->save($published);
 
                 $this->addFlash("success", $trans->trans("message.published_success"));
