@@ -13,7 +13,11 @@
                     <span class="btn btn-success btn-sm">
                         {{ "content_type.0"|trans }}
                     </span>
+
+                    <a href="{{ path('content', { url: published.url }) }}" class="article-title-hyperlink">
                     {{ published.content.title }}
+                    </a>
+
                     <div class="float-right">
                         <a href="{{ path('content', { url: published.url }) }}"
                            class="btn btn-sm btn-primary">

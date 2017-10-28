@@ -15,7 +15,10 @@
                     <div class="card-body card-body-new">
                         <h5 class="card-title">
                             <span class="btn btn-danger btn-sm">{{ "content_type.1"|trans }}</span>
-                            {{ published.content.title }}
+
+                            <a href="{{ path('content', { url: published.url }) }}" class="article-title-hyperlink">
+                                {{ published.content.title }}
+                            </a>
 
                             <div class="float-right">
                                 <a href="{{ path('content', { url: published.url }) }}"

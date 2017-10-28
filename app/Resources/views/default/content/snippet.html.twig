@@ -6,7 +6,11 @@
                     <span class="btn btn-primary btn-sm">
                         {{ "content_type.2"|trans }}
                     </span>
-                    {{ published.content.title }}
+
+                    <a href="{{ path('content', { url: published.url }) }}" class="article-title-hyperlink">
+                        {{ published.content.title }}
+                    </a>
+
                     <div class="float-right">
                         <a href="{{ path('content_comments', { url: published.url }) }}"
                            class="btn btn-sm btn-danger">
