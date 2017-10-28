@@ -85,7 +85,7 @@ class ContentController extends Controller {
                 $messages[] = ["danger", $trans->trans("message.not_image")];
             }
 
-            if ($publishedModel->getByUrl($published->getUrl()) instanceof Published) {
+            if ($publishedModel->getByUrl($published->getUrl()) instanceof Content) {
                 $messages[] = ["danger", $trans->trans("message.url_used")];
             }
 
