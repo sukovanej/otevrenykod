@@ -1,0 +1,20 @@
+<div class="card">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-body card-body-article">
+                <h4 class="card-title">
+                    <span class="btn btn-success btn-sm">
+                        {{ "content_type.2"|trans }}
+                    </span>
+                    {{ published.content.title }}
+                    <div class="float-right">
+                        <a href="{{ path('content_comments', { url: published.url }) }}"
+                           class="btn btn-sm btn-danger">
+                            {{ "general.comments"|trans }} ({{ published.content.countComments }})</a>
+                    </div>
+                </h4>
+                <p class="card-text">{{ published.content.content }}</p>
+            </div>
+        </div>
+    </div>
+</div>

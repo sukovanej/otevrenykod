@@ -9,6 +9,8 @@
                         {% include "default/content/article.html.twig" %}
                     {% elseif published.content.type == 1 %}
                         {% include "default/content/new.html.twig" %}
+                    {% elseif published.content.type == 2 %}
+                        {% include "default/content/snippet.html.twig" %}
                     {% endif %}
 
                     <br />

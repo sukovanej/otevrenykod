@@ -68,7 +68,7 @@ class ContentModel extends EntityManagerModel {
      * @return array
      */
     public function getList() {
-        return $this->getContentRepository()->findAll();
+        return $this->getContentRepository()->findBy([], ["created" => "DESC"]);
     }
 
     /**

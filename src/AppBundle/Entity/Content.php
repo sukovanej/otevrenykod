@@ -22,6 +22,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 class Content {
     const TYPE_ARTICLE = 0;
     const TYPE_NEWS = 1;
+    const TYPE_SNIPPET = 2;
 
     /**
      * @var array
@@ -117,6 +118,7 @@ class Content {
         self::setTypes([
             "content_type." . self::TYPE_ARTICLE => self::TYPE_ARTICLE,
             "content_type." . self::TYPE_NEWS => self::TYPE_NEWS,
+            "content_type." . self::TYPE_SNIPPET => self::TYPE_SNIPPET,
         ]);
     }
 

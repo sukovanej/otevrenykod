@@ -14,6 +14,7 @@ general:
 content_type:
     0: "Článek"
     1: "Novinka"
+    2: "Snippet"
 
 message:
     not_image: "Chybí obrázek"
