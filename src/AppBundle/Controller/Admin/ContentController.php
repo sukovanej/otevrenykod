@@ -28,7 +28,7 @@ class ContentController extends Controller {
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function add(ContentModel $contentModel, Request $request) {
+    public function add(ContentModel $contentModel, Request $request, TranslatorInterface $translator) {
         $content = new Content();
 
         $addContentForm = $this->createForm(ContentAddFormType::class, $content);
@@ -37,6 +37,9 @@ class ContentController extends Controller {
         if($addContentForm->isSubmitted() && $addContentForm->isValid()) {
             $content->setAuthor($this->getUser());
             $contentModel->save($content);
+
+            $this->addFlash("success", $translator->trans("message.content_created"));
+            return $this->redirectToRoute("admin_content_edit", ["id" => $content->getId()]);
         }
 
         return $this->render("admin/content/add.html.twig", [
