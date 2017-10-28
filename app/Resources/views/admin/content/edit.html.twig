@@ -4,8 +4,52 @@
 
 {% block content %}
     <div class="col-12">
+        <div class="alert alert-primary display-none" id="content-alert">
+            Obsah byl úspěšně synchronizován v <span id="content-time"></span>
+        </div>
+
         <a target="_blank" href="{{ path('admin_content_preview', {content_id : content.id}) }}"
            class="btn btn-warning float-right">Zobrazit náhled</a>
         {{ form(edit_form) }}
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function render(element) {
+            var value = element.val();
+
+            if (value == 2) {
+                $("#content_add_form_perex").parent().parent().fadeOut();
+                $("#content_add_form_imageFileObject").parent().parent().fadeOut();
+            } else {
+                $("#content_add_form_perex").parent().parent().fadeIn();
+                $("#content_add_form_imageFileObject").parent().parent().fadeIn();
+            }
+        }
+
+        $(document).ready(function () {
+            var element = $("select");
+            render(element);
+
+            $("select").change(function (obj) {
+                var element = $(obj.target);
+                render(element);
+            });
+
+            $('form').submit(function (e) {
+                e.preventDefault();
+                var url = "{{ path('admin_content_edit', {id: content.id}) }}";
+                var formSerialize = $(this).serialize();
+
+                $.post(url, formSerialize, function (response) {
+                    alert("test");
+                }, 'JSON');
+
+                var datetime = new Date();
+                $("#content-time").text(datetime.getHours() + ":" + datetime.getMinutes());
+                $("#content-alert").fadeIn();
+            });
+        });
+    </script>
 {% endblock %}

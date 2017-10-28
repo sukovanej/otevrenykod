@@ -81,7 +81,7 @@ class ContentController extends Controller {
         $publishForm->handleRequest($request);
 
         if ($publishForm->isSubmitted() && $publishForm->isValid()) {
-            if (empty(($content->getImage())) && $content->getType() != Content::TYPE_NEWS) {
+            if (empty(($content->getImage())) && $content->getType() == Content::TYPE_ARTICLE) {
                 $messages[] = ["danger", $trans->trans("message.not_image")];
             } else {
                 $publishedModel->save($published);

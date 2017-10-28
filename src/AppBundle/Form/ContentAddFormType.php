@@ -22,16 +22,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ContentAddFormType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        $builder->getData()->__construct();
+
         $builder
             ->add("title", TextType::class)
             ->add("type", ChoiceType::class, [
-                "choices" => ([
-                    "content_type." . Content::TYPE_ARTICLE => Content::TYPE_ARTICLE,
-                    "content_type." . Content::TYPE_NEWS => Content::TYPE_NEWS,
-                ]),
+                "choices" => $builder->getData()->getTypes(),
                 "choice_translation_domain" => "messages"
             ])
-            ->add("perex", TextAreaType::class)
+            ->add("perex", TextAreaType::class, [
+                "required"=> false
+            ])
             ->add("content", AceEditorType::class, [
                 'mode' => 'ace/mode/html',
                 'theme' => 'ace/theme/github',
