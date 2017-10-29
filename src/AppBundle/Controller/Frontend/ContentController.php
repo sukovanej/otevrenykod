@@ -26,7 +26,7 @@ class ContentController extends Controller {
      */
     public function indexAction(PublishedModel $publishedModel, $url) {
         return $this->render(":default:content.html.twig", [
-            "content" => $publishedModel->getByUrl($url)
+            "content" => $publishedModel->getByUrl($url)->getContent()
         ]);
     }
 
@@ -35,7 +35,7 @@ class ContentController extends Controller {
      */
     public function commentsAction(UserModel $userModel, PublishedModel $publishedModel, CommentModel $commentModel,
                                              Request $request, $url) {
-        $content = $publishedModel->getByUrl($url);
+        $content = $publishedModel->getByUrl($url)->getContent();
 
         $comment = new Comment();
         $comment->setParent(null);

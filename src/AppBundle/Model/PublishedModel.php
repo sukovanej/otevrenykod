@@ -42,6 +42,6 @@ class PublishedModel extends EntityManagerModel {
     public function getByUrl($url) {
         /** @var Published $published */
         $published = $this->getPublishedRepository()->findOneBy(["url" => $url]);
-        return $published->getContent();
+        return $published;
     }
 }
