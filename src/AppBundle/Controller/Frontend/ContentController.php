@@ -25,8 +25,10 @@ class ContentController extends Controller {
      * @Route("obsah/{url}", name="content")
      */
     public function indexAction(PublishedModel $publishedModel, $url) {
+        $published = $publishedModel->getByUrl($url);
         return $this->render(":default:content.html.twig", [
-            "content" => $publishedModel->getByUrl($url)->getContent()
+            "published" => $published,
+            "content" => $published->getContent()
         ]);
     }
 
