@@ -2,6 +2,7 @@ admin:
     administration: "Administrace"
     add_content: 'Přidat obsah'
     publish: "Publikovat"
+    categories: "Kategorie"
 
 general:
     content: "Obsah"

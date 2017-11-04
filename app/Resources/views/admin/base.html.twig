@@ -16,6 +16,12 @@
                         {{ "admin.add_content"|trans }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="btn btn-danger" href="{{ path('admin_category') }}">
+                        <img src="{{ asset('svg/pencil.svg') }}"/>
+                        {{ "admin.categories"|trans }}
+                    </a>
+                </li>
             </ul>
 
             {% block content %}{% endblock %}

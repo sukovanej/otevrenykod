@@ -1,0 +1,26 @@
+{% extends "admin/base.html.twig" %}
+
+{% form_theme add_category_form "form/bootstrap_3_horizontal_layout.html.twig" %}
+
+{% block content %}
+    <div class="col-12">
+        {{ form(add_category_form) }}
+    </div>
+
+    <table class="table table-stripped table-bordered">
+        <thead>
+        <tr>
+            <th>Název</th>
+            <th>Operace</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in category_list %}
+            <tr>
+                <td>{{ category.name }}</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

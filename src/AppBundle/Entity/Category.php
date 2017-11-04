@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Category
  * @package AppBundle\Entity
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CategoryRepository")
  * @ORM\Table(name="category")
  */
 class Category {
@@ -60,70 +60,70 @@ class Category {
     /**
      * @return int
      */
-    public function getId(): int {
+    public function getId() {
         return $this->id;
     }
 
     /**
      * @param int $id
      */
-    public function setId(int $id) {
+    public function setId($id) {
         $this->id = $id;
     }
 
     /**
      * @return string
      */
-    public function getName(): string {
+    public function getName() {
         return $this->name;
     }
 
     /**
      * @param string $name
      */
-    public function setName(string $name) {
+    public function setName($name) {
         $this->name = $name;
     }
 
     /**
      * @return \DateTime
      */
-    public function getCreated(): \DateTime {
+    public function getCreated() {
         return $this->created;
     }
 
     /**
      * @param \DateTime $created
      */
-    public function setCreated(\DateTime $created) {
+    public function setCreated($created) {
         $this->created = $created;
     }
 
     /**
      * @return User
      */
-    public function getAuthor(): User {
+    public function getAuthor() {
         return $this->author;
     }
 
     /**
      * @param User $author
      */
-    public function setAuthor(User $author) {
+    public function setAuthor($author) {
         $this->author = $author;
     }
 
     /**
      * @return Content[]
      */
-    public function getContents(): array {
+    public function getContents() {
         return $this->contents;
     }
 
     /**
      * @param Content[] $contents
      */
-    public function setContents(array $contents) {
+    public function setContents($contents) {
         $this->contents = $contents;
     }
 }
