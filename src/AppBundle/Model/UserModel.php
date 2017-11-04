@@ -45,7 +45,7 @@ class UserModel extends EntityManagerModel {
             $user->setImage($fileName);
         }
 
-        $this->getContentRepository()->merge($user);
+        $this->getUserRepository()->merge($user);
     }
 
     /**

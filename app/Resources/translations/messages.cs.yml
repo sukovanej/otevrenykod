@@ -8,6 +8,7 @@ general:
     content: "Obsah"
     author: "Autor"
     created: "Vytvořeno"
+    updated: "Naposledy upraveno"
     published: "Publikováno"
     continue_reading: "Číst dále"
     comments: "Názory"
@@ -22,3 +23,6 @@ message:
     content_created: "Nový obsah byl úspěšně vytvořen. Můžete pokračovat v úpravách."
     published_success: "Obsah byl publikován!"
     url_used: "Vybraná URL adresa je již využívána!"
+
+Submit: "Odeslat"
+Image file object: "Obrázek"

@@ -14,10 +14,10 @@
     height: 35px;
 }
 
-.card-article-img img
-{
+.card-article-img img {
     width: 100%;
 }
+
 .pull-left {
     float: left;
 }
@@ -89,7 +89,7 @@ footer {
 }
 
 .display-none {
-    display:none;
+    display: none;
 }
 
 body {
@@ -112,4 +112,13 @@ body {
 
 a {
     cursor: pointer;
+}
+
+.user_view_image {
+    max-width: 100%;
+    border-radius: 2px;
+}
+
+.white-img {
+    filter: brightness(0) invert(1);
 }

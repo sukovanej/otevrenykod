@@ -54,12 +54,26 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ path('user_view', { username : app.user.username}) }}">
+                            <img src="{{ asset('svg/person.svg') }}" /> &nbsp;
                             Zobrazit profil
                         </a>
-                        <a class="dropdown-item" href="{{ path('user_edit') }}">Upravit profil</a>
+                        <a class="dropdown-item" href="{{ path('user_edit') }}">
+                            <img src="{{ asset('svg/settings.svg') }}" /> &nbsp;
+                            Upravit profil
+                        </a>
+
                         {% if is_granted("ROLE_CONTRIBUTOR") %}
-                            <a class="dropdown-item" href="{{ path('admin') }}">Administrace</a>
+                            <a class="dropdown-item" href="{{ path('admin') }}">
+                                <img src="{{ asset('svg/gear.svg') }}" /> &nbsp;
+                                Administrace
+                            </a>
                         {% endif %}
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">
+                            <img src="{{ asset('svg/x.svg') }}" /> &nbsp;
+                            Odhlásit
+                        </a>
                     </div>
                 </li>
             {% else %}

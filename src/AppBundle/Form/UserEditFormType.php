@@ -22,7 +22,7 @@ class UserEditFormType extends AbstractType {
 
         $builder
             ->add("imageFileObject", FileType::class, [
-                "required" => false
+                "required" => false,
             ])
             ->add("submit", SubmitType::class);
     }

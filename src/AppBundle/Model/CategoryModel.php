@@ -41,4 +41,12 @@ class CategoryModel  extends EntityManagerModel {
     public function getById($id) {
         return $this->getCategoryRepository()->find($id);
     }
+
+    /**
+     * @param $name
+     * @return Category
+     */
+    public function getByName($name) {
+        return $this->getCategoryRepository()->findOneBy(["name" => $name]);
+    }
 }

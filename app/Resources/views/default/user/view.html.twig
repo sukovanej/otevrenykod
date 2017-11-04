@@ -6,11 +6,11 @@
 
 {% block body %}
     <div class="container container-content">
+        <h1>{{ user.username }}</h1>
+        <br/>
         <div class="row">
-            <h1>{{ user.username }}</h1>
-
             <div class="col-md-3">
-                <img src="{{ asset('img/user') }}{{ user.id }}" />
+                <img src="{{ asset('img/user/') }}{{ user.image }}" class="user_view_image"/>
             </div>
 
             <div class="col-md-9">

@@ -10,14 +10,16 @@ namespace AppBundle\Controller\Frontend;
 
 
 use AppBundle\Entity\User;
+use AppBundle\Form\UserEditFormType;
 use AppBundle\Model\PublishedModel;
 use AppBundle\Model\UserModel;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class UserController extends Controller  {
     /**
-     * @Route("uzivatel/{username}", name="user_view")
+     * @Route("uzivatel/zobrazit/{username}", name="user_view")
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
@@ -35,12 +37,20 @@ class UserController extends Controller  {
      *
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function editAction(UserModel $userModel) {
+    public function editAction(UserModel $userModel, Request $request) {
         /** @var User $user */
         $user = $this->getUser();
 
-        return $this->render("default/user/view.html.twig", [
-            "user" => $user
+        $editForm = $this->createForm(UserEditFormType::class, $user);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $userModel->merge($user);
+        }
+
+        return $this->render("default/user/edit.html.twig", [
+            "user" => $user,
+            "edit_form" => $editForm->createView()
         ]);
     }
 }

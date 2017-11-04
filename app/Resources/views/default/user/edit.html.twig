@@ -1,0 +1,13 @@
+{% extends 'layout.html.twig' %}
+
+{% form_theme edit_form "form/bootstrap_3_horizontal_layout.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/magula.min.css">
+{% endblock %}
+
+{% block body %}
+    <div class="container container-content">
+        {{ form(edit_form) }}
+    </div>
+{% endblock %}

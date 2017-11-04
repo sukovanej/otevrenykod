@@ -9,6 +9,7 @@
 namespace AppBundle\Model;
 
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Content;
 use AppBundle\Entity\Published;
 use AppBundle\Entity\User;
@@ -47,6 +48,23 @@ class PublishedModel extends EntityManagerModel {
             ->join('a.content', 'd')
             ->where('d.author = :author')
             ->setParameter('author', $user)
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @param Category $category
+     * @return Published[]
+     */
+    public function getByCategory(Category $category) {
+        $repository = $this->getPublishedRepository();
+
+        $query = $repository->createQueryBuilder('a')
+            ->join('a.content', 'd')
+            ->join('d.category', 'c')
+            ->where('c = :category')
+            ->setParameter('category', $category)
             ->getQuery();
 
         return $query->getResult();

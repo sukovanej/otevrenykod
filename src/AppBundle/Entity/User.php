@@ -26,24 +26,6 @@ class User extends \FOS\UserBundle\Model\User {
     protected $id;
 
     /**
-     * @var Content[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Content", mappedBy="content")
-     */
-    private $contents;
-
-    /**
-     * @var Category[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Category", mappedBy="author")
-     */
-    private $categories;
-
-    /**
-     * @var Tag[]
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Tag", mappedBy="author")
-     */
-    private $tags;
-
-    /**
      * @var File
      * @ORM\Column(type="string", nullable=true)
      */
@@ -59,6 +41,7 @@ class User extends \FOS\UserBundle\Model\User {
      */
     public function __construct() {
         parent::__construct();
+        $this->enabled = true;
     }
 
     /**
@@ -73,5 +56,19 @@ class User extends \FOS\UserBundle\Model\User {
      */
     public function setImageFileObject($imageFileObject) {
         $this->imageFileObject = $imageFileObject;
+    }
+
+    /**
+     * @return File
+     */
+    public function getImage() {
+        return $this->image;
+    }
+
+    /**
+     * @param File $image
+     */
+    public function setImage($image) {
+        $this->image = $image;
     }
 }

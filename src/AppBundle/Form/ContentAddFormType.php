@@ -9,8 +9,10 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\Category;
 use AppBundle\Entity\Content;
 use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -29,6 +31,13 @@ class ContentAddFormType extends AbstractType {
             ->add("type", ChoiceType::class, [
                 "choices" => $builder->getData()->getTypes(),
                 "choice_translation_domain" => "messages"
+            ])
+            ->add("category", EntityType::class, [
+                "class" => Category::class,
+                "choice_label" => function(Category $category) {
+                    return $category->getName();
+                },
+                "required" => false
             ])
             ->add("perex", TextAreaType::class, [
                 "required"=> false

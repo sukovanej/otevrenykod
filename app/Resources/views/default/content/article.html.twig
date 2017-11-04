@@ -15,20 +15,31 @@
                     </span>
 
                     <a href="{{ path('content', { url: published.url }) }}" class="article-title-hyperlink">
-                    {{ published.content.title }}
+                        {{ published.content.title }}
+                    </a>
+                </h4>
+
+                <p class="card-text">{{ published.content.perex }}</p>
+
+                <div>
+                    <a href="{{ path('user_view', { username: published.content.author.username }) }}"
+                       class="btn btn-sm btn-secondary">
+                        <img src="{{ asset('svg/person.svg') }}" class="white-img" />
+                        {{ published.content.author.username }}
                     </a>
 
-                    <div class="float-right">
-                        <a href="{{ path('content', { url: published.url }) }}"
+                    {% if published.content.category is not null %}
+                        <a href="{{ path('category', { category_name: published.content.category.url }) }}"
                            class="btn btn-sm btn-primary">
-                            {{ "general.continue_reading"|trans }}</a>
+                            <img src="{{ asset('svg/tag.svg') }}" class="white-img" />
+                            {{ published.content.category.name }}</a>
+                    {% endif %}
 
-                        <a href="{{ path('content_comments', { url: published.url }) }}"
-                           class="btn btn-sm btn-danger">
-                            {{ "general.comments"|trans }} ({{ published.content.countComments }})</a>
-                    </div>
-                </h4>
-                <p class="card-text">{{ published.content.perex }}</p>
+                    <a href="{{ path('content_comments', { url: published.url }) }}"
+                       class="btn btn-sm btn-success">
+                        <img src="{{ asset('svg/comment-discussion.svg') }}" class="white-img" />
+                        {{ "general.comments"|trans }} ({{ published.content.countComments }})</a>
+                </div>
             </div>
         </div>
     </div>

@@ -79,6 +79,13 @@ class Category {
     }
 
     /**
+     * @return string
+     */
+    public function getUrl() {
+        return urlencode($this->getName());
+    }
+
+    /**
      * @param string $name
      */
     public function setName($name) {

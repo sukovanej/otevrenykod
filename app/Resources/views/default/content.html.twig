@@ -21,6 +21,12 @@
                         <a href="{{ path('user_view', { username : content.author.username }) }}">
                             {{ content.author.username }}
                         </a>
+                        v kategorii
+                        {% if published.content.category is not null %}
+                            <a href="{{ path('category', { category_name: published.content.category.url }) }}">
+                                {{ published.content.category.name }}
+                            </a>
+                        {% endif %}
                     </div>
 
                     {{ content.perex }}
@@ -36,6 +42,12 @@
                 <a href="{{ path('user_view', { username : content.author.username }) }}">
                     {{ content.author.username }}
                 </a>
+                v kategorii
+                {% if published.content.category is not null %}
+                    <a href="{{ path('category', { category_name: published.content.category.url }) }}">
+                        {{ published.content.category.name }}
+                    </a>
+                {% endif %}
             </div>
         {% endif %}
 
