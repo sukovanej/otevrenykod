@@ -113,7 +113,8 @@ class Content {
     private $comments;
 
     public function __construct() {
-        $this->created = new \DateTime();
+        if ($this->created == null)
+            $this->created = new \DateTime();
 
         self::setTypes([
             "content_type." . self::TYPE_ARTICLE => self::TYPE_ARTICLE,

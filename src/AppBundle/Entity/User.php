@@ -40,8 +40,6 @@ class User extends \FOS\UserBundle\Model\User {
      * User constructor.
      */
     public function __construct() {
-        parent::__construct();
-        $this->enabled = true;
     }
 
     /**
