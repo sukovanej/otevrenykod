@@ -62,7 +62,10 @@ class User extends \FOS\UserBundle\Model\User {
      * @return File
      */
     public function getImage() {
-        return $this->image;
+        if ($this->image != null)
+            return $this->image;
+
+        return "no.jpg";
     }
 
     /**

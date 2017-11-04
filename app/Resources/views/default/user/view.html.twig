@@ -6,21 +6,24 @@
 
 {% block body %}
     <div class="container container-content">
-        <h1>{{ user.username }}</h1>
+        <h1>profil uživatele <strong>{{ user.username }}</strong></h1>
+
         <br/>
+
         <div class="row">
             <div class="col-md-3">
                 <img src="{{ asset('img/user/') }}{{ user.image }}" class="user_view_image"/>
             </div>
 
             <div class="col-md-9">
-                <h3>Příspěvky uživatele</h3>
+                <h3>Příspěvky ({{ published_list|length }})</h3>
                 <ul>
                     {% for published in published_list %}
                         <li>
                             <a href="{{ path('content', { url: published.content.published.url }) }}">
                                 {{ published.content.title }}
                             </a>
+                            <em class="list-group-item-light">({{ published.datetime|date("d. m. Y") }})</em>
                         </li>
                     {% endfor %}
                 </ul>
