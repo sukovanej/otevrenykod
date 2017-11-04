@@ -43,8 +43,10 @@ class CommentModel extends EntityManagerModel {
      */
     public function getListByContent(Content $content) {
         $query = $this->getCommentRepository()->createQueryBuilder("p")
-            ->where("p.id = 0")
-            ->orderBy("p.created", "ASC")
+            ->join("p.content", "c")
+            ->where("c = :content")
+            ->orderBy("p.created", "DESC")
+            ->setParameter("content", $content)
             ->getQuery();
 
         return $query->getResult();

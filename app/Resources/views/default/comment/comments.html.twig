@@ -7,18 +7,22 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container container-content">
-        <h1 class="header-title">Názory k <strong>{{ content.title }}</strong></h1>
+    <div class="container">
+        <div class="card">
+            <div class="card-body">
+                <h1 class="header-title">Názory k <strong>{{ content.title }}</strong></h1>
 
-        <div class="alert alert-primary display-none" id="comment-react-alert">
-            Nyní odpovídáte na komentář #<span id="comment-react-id"></span>
+                <div class="alert alert-primary display-none" id="comment-react-alert">
+                    Nyní odpovídáte na komentář #<span id="comment-react-id"></span>
+                </div>
+
+                {{ form(add_form) }}
+            </div>
         </div>
-
-        {{ form(add_form) }}
 
         <hr>
 
-        {% for comment in content.comments %}
+        {% for comment in comments %}
             {% include "default/comment/comment_item.html.twig" %}
 
             {% if comment.parent is not null %}
