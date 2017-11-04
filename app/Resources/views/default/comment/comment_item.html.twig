@@ -1,10 +1,11 @@
 <div class="card">
     <div class="card-body">
         <div class="card-text">
+            <img src="{{ asset('img/user/') }}{{ comment.author.image }}" class="user_comment_image"/>
             <span class="comment-info">
-                napsal {{ comment.author.username }}, {{ comment.created|date("g:i d. m. Y") }}
+                    napsal {{ comment.author.username }}, {{ comment.created|date("g:i d. m. Y") }}
                 <span class="btn btn-sm btn-primary float-right react-btn" id="{{ comment.id }}">Reagovat</span>
-            </span>
+                </span>
             <p>{{ comment.text|comment|raw }}</p>
         </div>
     </div>

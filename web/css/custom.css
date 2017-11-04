@@ -129,3 +129,11 @@ a {
     border: 1px solid #e0e0e0;
     width: 40%;
 }
+
+.user_comment_image {
+    width: 80px;
+    height: 80px;
+    float: left;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
