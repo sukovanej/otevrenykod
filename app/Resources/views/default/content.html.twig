@@ -18,7 +18,9 @@
                 <div class="col-xl-10">
                     <div class="article-info">
                         {{ published.datetime|date("d. m. Y") }},
-                        <a href="">{{ content.author.username }}</a>
+                        <a href="{{ path('user_view', { username : content.author.username }) }}">
+                            {{ content.author.username }}
+                        </a>
                     </div>
 
                     {{ content.perex }}
@@ -31,7 +33,9 @@
         {% else %}
             <div class="article-info">
                 {{ content.created|date("d. m. Y") }},
-                <a href="">{{ content.author.username }}</a>
+                <a href="{{ path('user_view', { username : content.author.username }) }}">
+                    {{ content.author.username }}
+                </a>
             </div>
         {% endif %}
 

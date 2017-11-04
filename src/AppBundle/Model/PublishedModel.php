@@ -11,6 +11,7 @@ namespace AppBundle\Model;
 
 use AppBundle\Entity\Content;
 use AppBundle\Entity\Published;
+use AppBundle\Entity\User;
 use AppBundle\Repository\PublishedRepository;
 
 class PublishedModel extends EntityManagerModel {
@@ -33,6 +34,22 @@ class PublishedModel extends EntityManagerModel {
      */
     public function getList() {
         return $this->getPublishedRepository()->findPublished();
+    }
+
+    /**
+     * @param User $user
+     * @return Published[]
+     */
+    public function getByUser(User $user) {
+        $repository = $this->getPublishedRepository();
+
+        $query = $repository->createQueryBuilder('a')
+            ->join('a.content', 'd')
+            ->where('d.author = :author')
+            ->setParameter('author', $user)
+            ->getQuery();
+
+        return $query->getResult();
     }
 
     /**

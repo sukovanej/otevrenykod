@@ -44,9 +44,34 @@ class User extends \FOS\UserBundle\Model\User {
     private $tags;
 
     /**
+     * @var File
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $image = null;
+
+    /**
+     * @var UploadedFile
+     */
+    private $imageFileObject = null;
+
+    /**
      * User constructor.
      */
     public function __construct() {
         parent::__construct();
+    }
+
+    /**
+     * @return UploadedFile
+     */
+    public function getImageFileObject() {
+        return $this->imageFileObject;
+    }
+
+    /**
+     * @param File $imageFileObject
+     */
+    public function setImageFileObject($imageFileObject) {
+        $this->imageFileObject = $imageFileObject;
     }
 }

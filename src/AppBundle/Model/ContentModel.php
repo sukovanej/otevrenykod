@@ -10,6 +10,7 @@ namespace AppBundle\Model;
 
 
 use AppBundle\Entity\Content;
+use AppBundle\Entity\User;
 use AppBundle\Repository\ContentRepository;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -62,6 +63,14 @@ class ContentModel extends EntityManagerModel {
         }
 
         $this->getContentRepository()->save($content);
+    }
+
+    /**
+     * @param User $user
+     * @return Content[]
+     */
+    public function getByUser(User $user) {
+        return $this->getContentRepository()->findBy(["author" => $user], ["created" => "DESC"]);
     }
 
     /**
