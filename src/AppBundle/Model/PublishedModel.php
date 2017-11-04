@@ -66,7 +66,7 @@ class PublishedModel extends EntityManagerModel {
             ->join('d.category', 'c')
             ->where('c = :category')
             ->setParameter('category', $category)
-            ->orderBy("d.datetime", "DESC")
+            ->orderBy("a.datetime", "DESC")
             ->getQuery();
 
         return $query->getResult();
