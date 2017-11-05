@@ -45,6 +45,7 @@ class ContentAddFormType extends AbstractType {
             ->add("content", AceEditorType::class, [
                 'mode' => 'ace/mode/html',
                 'theme' => 'ace/theme/github',
+//                'keyboard_handler' => 'ace/keyboard/vim',
             ])
             ->add("imageFileObject", FileType::class, [
                 "required" => false
