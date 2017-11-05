@@ -16,6 +16,8 @@
 
 {% block javascripts %}
     <script>
+        var run_asynchronous = true;
+
         function render(element) {
             var value = element.val();
 
@@ -28,6 +30,10 @@
             }
         }
 
+        $("input[type=file]").change(function() {
+            run_asynchronous = false;
+        });
+
         $(document).ready(function () {
             var element = $("select#content_add_form_type");
             render(element);
@@ -38,17 +44,19 @@
             });
 
             $('form').submit(function (e) {
-                e.preventDefault();
-                var url = "{{ path('admin_content_edit', {id: content.id}) }}";
-                var formSerialize = $(this).serialize();
+                if (run_asynchronous) {
+                    e.preventDefault();
+                    var url = "{{ path('admin_content_edit', {id: content.id}) }}";
+                    var formSerialize = $(this).serialize();
 
-                $.post(url, formSerialize, function (response) {
-                    alert("test");
-                }, 'JSON');
+                    $.post(url, formSerialize, function (response) {
+                        alert("test");
+                    }, 'JSON');
 
-                var datetime = new Date();
-                $("#content-time").text(datetime.getHours() + ":" + datetime.getMinutes());
-                $("#content-alert").fadeIn();
+                    var datetime = new Date();
+                    $("#content-time").text(datetime.getHours() + ":" + datetime.getMinutes());
+                    $("#content-alert").fadeIn();
+                }
             });
         });
     </script>
