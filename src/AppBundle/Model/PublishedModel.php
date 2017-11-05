@@ -46,7 +46,7 @@ class PublishedModel extends EntityManagerModel {
 
         $query = $repository->createQueryBuilder('a')
             ->join('a.content', 'd')
-            ->where('d.author = :author')
+            ->where('d.author = :author AND a.datetime <= CURRENT_TIMESTAMP()')
             ->setParameter('author', $user)
             ->orderBy("a.datetime", "DESC")
             ->getQuery();
@@ -64,7 +64,7 @@ class PublishedModel extends EntityManagerModel {
         $query = $repository->createQueryBuilder('a')
             ->join('a.content', 'd')
             ->join('d.category', 'c')
-            ->where('c = :category')
+            ->where('c = :category AND a.datetime <= CURRENT_TIMESTAMP()')
             ->setParameter('category', $category)
             ->orderBy("a.datetime", "DESC")
             ->getQuery();
