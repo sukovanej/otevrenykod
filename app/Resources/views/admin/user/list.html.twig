@@ -1,0 +1,23 @@
+{% extends "admin/base.html.twig" %}
+
+{% block content %}
+    <div class="col-12">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>{{ "general.username"|trans }}</th>
+                <th>{{ "general.last_login"|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for user in user_list %}
+                <tr>
+                    <td><a href="{{ path('user_view', { username : user.username }) }}">{{ user.username }}<a/></td>
+                    <td>{{ user.lastLogin|date("d. m. Y") }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}

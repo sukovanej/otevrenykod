@@ -3,6 +3,7 @@ admin:
     add_content: 'Přidat obsah'
     publish: "Publikovat"
     categories: "Kategorie"
+    users: "Uživatelé"
 
 general:
     content: "Obsah"
@@ -12,6 +13,8 @@ general:
     published: "Publikováno"
     continue_reading: "Číst dále"
     comments: "Názory"
+    username: "Uživatelské jméno"
+    last_login: "Naposledy přihlášen"
 
 content_type:
     0: "Článek"
