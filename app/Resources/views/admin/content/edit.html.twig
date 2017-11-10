@@ -18,17 +18,7 @@
     <script>
         var run_asynchronous = true;
 
-        function render(element) {
-            var value = element.val();
-
-            if (value == 2) {
-                $("#content_add_form_perex").parent().parent().fadeOut();
-                $("#content_add_form_imageFileObject").parent().parent().fadeOut();
-            } else {
-                $("#content_add_form_perex").parent().parent().fadeIn();
-                $("#content_add_form_imageFileObject").parent().parent().fadeIn();
-            }
-        }
+        {% include "admin/content/content_form.html.twig.js" %}
 
         $("input[type=file]").change(function() {
             run_asynchronous = false;
