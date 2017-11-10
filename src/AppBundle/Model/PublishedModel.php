@@ -54,6 +54,22 @@ class PublishedModel extends EntityManagerModel {
     /**
      * @return Published[]
      */
+    public function getHomepageSharedList($offset) {
+        $repository = $this->getPublishedRepository();
+
+        $query = $repository->createQueryBuilder('a')
+            ->join("a.content", "c")
+            ->where('a.datetime <= CURRENT_TIMESTAMP() and c.type = 3')
+            ->setMaxResults($offset)
+            ->orderBy("a.datetime", "DESC")
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
+     * @return Published[]
+     */
     public function getHomepageList($start, $offset) {
         $repository = $this->getPublishedRepository();
 

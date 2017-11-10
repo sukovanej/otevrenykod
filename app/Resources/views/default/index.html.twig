@@ -32,6 +32,28 @@
                     </nav>
                 {% endif %}
             </div>
+            <div class="col-xl-4 col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        Novinky od vedle
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        {% for published in published_shared %}
+                            <li class="list-group-item">
+                                {{ published.content.content|raw }}
+                                <p class="shared-info">
+                                    <a href="{{ path('user_view', { username: published.content.author.username }) }}">
+                                        <img src="{{ asset('svg/person.svg') }}"/>
+                                        {{ published.content.author.username }}
+                                    </a>
+
+                                    {{ published.content.created|date("d. m. Y") }}
+                                </p>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

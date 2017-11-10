@@ -137,3 +137,9 @@ a {
     margin-right: 15px;
     margin-bottom: 15px;
 }
+
+.shared-info {
+    font-size: 13px;
+    color: #868686;
+    text-align: right;
+}

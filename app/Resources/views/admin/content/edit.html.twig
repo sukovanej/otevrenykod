@@ -35,6 +35,7 @@
 
             $('form').submit(function (e) {
                 if (run_asynchronous) {
+                    console.log("kokot");
                     e.preventDefault();
                     var url = "{{ path('admin_content_edit', {id: content.id}) }}";
                     var formSerialize = $(this).serialize();
