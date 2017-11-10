@@ -38,6 +38,36 @@ class PublishedModel extends EntityManagerModel {
     }
 
     /**
+     * @return int
+     */
+    public function getCountHomepageList() {
+        $repository = $this->getPublishedRepository();
+
+        $query = $repository->createQueryBuilder('a')
+            ->select("count(a.id)")
+            ->where('a.datetime <= CURRENT_TIMESTAMP()')
+            ->getQuery();
+
+        return $query->getSingleScalarResult();
+    }
+
+    /**
+     * @return Published[]
+     */
+    public function getHomepageList($start, $offset) {
+        $repository = $this->getPublishedRepository();
+
+        $query = $repository->createQueryBuilder('a')
+            ->where('a.datetime <= CURRENT_TIMESTAMP()')
+            ->setFirstResult($start)
+            ->setMaxResults($offset)
+            ->orderBy("a.datetime", "DESC")
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
      * @param User $user
      * @return Published[]
      */

@@ -17,8 +17,16 @@
                         {% include "default/content/snippet.html.twig" %}
                     {% endif %}
 
-                    <br />
+                    <br/>
                 {% endfor %}
+
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        {% for i in 0..(count / content_per_page - 1) %}
+                            <li class="page-item"><a class="page-link" href="{{ path('homepage', { page : i }) }}">{{ i + 1 }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </nav>
             </div>
         </div>
     </div>
