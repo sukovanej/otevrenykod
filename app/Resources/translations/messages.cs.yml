@@ -20,7 +20,7 @@ content_type:
     0: "Článek"
     1: "Novinka"
     2: "Snippet"
-    3: ""
+    3: "Novinky od vedle"
 
 message:
     not_image: "Chybí obrázek"

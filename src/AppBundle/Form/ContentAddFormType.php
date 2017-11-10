@@ -11,7 +11,7 @@ namespace AppBundle\Form;
 
 use AppBundle\Entity\Category;
 use AppBundle\Entity\Content;
-use Norzechowicz\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
+use Sukovanej\AceEditorBundle\Form\Extension\AceEditor\Type\AceEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
@@ -45,7 +45,7 @@ class ContentAddFormType extends AbstractType {
             ->add("content", AceEditorType::class, [
                 'mode' => 'ace/mode/html',
                 'theme' => 'ace/theme/github',
-//                'keyboard_handler' => 'ace/keyboard/vim',
+                'keyboard_handler' => 'ace/keyboard/vim',
             ])
             ->add("imageFileObject", FileType::class, [
                 "required" => false
