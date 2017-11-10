@@ -20,6 +20,7 @@ content_type:
     0: "Článek"
     1: "Novinka"
     2: "Snippet"
+    3: ""
 
 message:
     not_image: "Chybí obrázek"
@@ -29,3 +30,7 @@ message:
 
 Submit: "Odeslat"
 Image file object: "Obrázek"
+Content: "Obsah"
+Title: "Titulek"
+Type: "Typ"
+

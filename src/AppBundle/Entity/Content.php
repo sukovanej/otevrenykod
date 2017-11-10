@@ -23,6 +23,7 @@ class Content {
     const TYPE_ARTICLE = 0;
     const TYPE_NEWS = 1;
     const TYPE_SNIPPET = 2;
+    const TYPE_SHARED = 3;
 
     /**
      * @var array
@@ -120,6 +121,7 @@ class Content {
             "content_type." . self::TYPE_ARTICLE => self::TYPE_ARTICLE,
             "content_type." . self::TYPE_NEWS => self::TYPE_NEWS,
             "content_type." . self::TYPE_SNIPPET => self::TYPE_SNIPPET,
+            "content_type." . self::TYPE_SHARED => self::TYPE_SHARED,
         ]);
     }
 
