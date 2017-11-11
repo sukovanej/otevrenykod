@@ -143,3 +143,7 @@ a {
     color: #868686;
     text-align: right;
 }
+
+.card-main {
+    margin-bottom: 25px;
+}
