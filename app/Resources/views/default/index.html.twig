@@ -38,6 +38,7 @@
                     <ul class="list-group list-group-flush">
                         {% for published in published_shared %}
                             <li class="list-group-item">
+                                <h5>{{ published.content.title }}</h5>
                                 {{ published.content.content|raw }}
                                 <p class="shared-info">
                                     <a href="{{ path('user_view', { username: published.content.author.username }) }}">
