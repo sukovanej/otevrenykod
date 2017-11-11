@@ -90,6 +90,9 @@ class ContentController extends Controller {
             }
 
             if (empty($messages)) {
+                if ($published->getContent()->getType() == Content::TYPE_SHARED)
+                    $published->setUrl($publishedModel->createSharedUrl($published->getId()));
+
                 $publishedModel->save($published);
 
                 $this->addFlash("success", $trans->trans("message.published_success"));

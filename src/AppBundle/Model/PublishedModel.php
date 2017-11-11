@@ -127,4 +127,8 @@ class PublishedModel extends EntityManagerModel {
         $published = $this->getPublishedRepository()->findOneBy(["url" => $url]);
         return $published;
     }
+
+    public function createSharedUrl($id) {
+        return "novinka-od-vedle-" . $id;
+    }
 }

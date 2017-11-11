@@ -9,6 +9,7 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entity\Content;
 use AppBundle\Entity\Published;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -19,8 +20,14 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class ContentPublishFormType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
+        /** @var Published $data */
+        $data = $builder->getData();
+
+        if ($data->getContent()->getType() != Content::TYPE_SHARED)
         $builder
-            ->add("url", TextType::class)
+            ->add("url", TextType::class);
+
+        $builder
             ->add("datetime", DateTimeType::class)
             ->add("submit", SubmitType::class);
     }
