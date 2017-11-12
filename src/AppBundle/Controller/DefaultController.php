@@ -13,9 +13,17 @@ class DefaultController extends Controller
     const CONTENT_SHARED_PER_PAGE = 10;
 
     /**
-     * @Route("/{page}", name="homepage")
+     * @Route("/", name="homepage")
      */
-    public function indexAction(PublishedModel $publishedModel, Request $request, $page = 0)
+    public function indexAction(PublishedModel $publishedModel, Request $request)
+    {
+        return $this->indexArticlesAction($publishedModel, $request, 0);
+    }
+
+    /**
+     * @Route("/clanky/{page}", name="articles")
+     */
+    public function indexArticlesAction(PublishedModel $publishedModel, Request $request, $page)
     {
         $count = $publishedModel->getCountHomepageList();
         $content = $publishedModel->getHomepageList($page * self::CONTENT_PER_PAGE, self::CONTENT_PER_PAGE);

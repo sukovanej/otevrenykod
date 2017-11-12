@@ -74,7 +74,8 @@ class PublishedModel extends EntityManagerModel {
         $repository = $this->getPublishedRepository();
 
         $query = $repository->createQueryBuilder('a')
-            ->where('a.datetime <= CURRENT_TIMESTAMP()')
+            ->join("a.content", "c")
+            ->where('a.datetime <= CURRENT_TIMESTAMP() and c.type != 3')
             ->setFirstResult($start)
             ->setMaxResults($offset)
             ->orderBy("a.datetime", "DESC")
