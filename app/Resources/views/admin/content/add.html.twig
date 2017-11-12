@@ -16,7 +16,7 @@
             var element = $("select#content_add_form_type");
             render(element);
 
-            $("select").change(function (obj) {
+            $(element).change(function (obj) {
                 var element = $(obj.target);
                 render(element);
             });
