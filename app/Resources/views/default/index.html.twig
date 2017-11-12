@@ -21,7 +21,7 @@
                 {% if count / content_per_page - 1 > 0 %}
                     <nav aria-label="Page navigation example">
                         <ul class="pagination justify-content-center">
-                            {% for i in 0..(count / content_per_page - 1) %}
+                            {% for i in 0..((count / content_per_page - 1)|round) %}
                                 <li class="page-item">
                                     <a class="page-link" href="{{ path('articles', { page : i }) }}">{{ i + 1 }}</a>
                                 </li>
