@@ -4,6 +4,7 @@ admin:
     publish: "Publikovat"
     categories: "Kategorie"
     users: "Uživatelé"
+    images: "Obrázky"
 
 general:
     content: "Obsah"

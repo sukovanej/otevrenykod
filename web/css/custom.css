@@ -147,3 +147,7 @@ a {
 .card-main {
     margin-bottom: 25px;
 }
+
+.image_admin {
+    max-width: 100%;
+}

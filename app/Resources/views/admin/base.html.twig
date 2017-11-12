@@ -28,6 +28,12 @@
                         {{ "admin.users"|trans }}
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="btn btn-secondary" href="{{ path('admin_images') }}">
+                        <img src="{{ asset('svg/browser.svg') }}"/>
+                        {{ "admin.images"|trans }}
+                    </a>
+                </li>
             </ul>
 
             {% block content %}{% endblock %}
