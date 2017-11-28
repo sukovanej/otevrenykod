@@ -44,6 +44,16 @@
                 <a class="nav-link" href="{{ path('homepage') }}">Hlavní stránka</a>
             </li>
         </ul>
+        <form class="navbar-form navbar-left" method="GET" action="{{ path('search') }}">
+            <div class="input-group">
+                <input type="text" class="search-box" name="value" placeholder="Vyhledat">
+                <div class="input-group-btn">
+                    <button class="btn btn-default" type="submit">
+                        <img src="{{ asset('svg/search.svg') }}" />
+                    </button>
+                </div>
+            </div>
+        </form>
         <ul class="nav navbar-nav navbar-right">
             {% if is_granted("ROLE_USER") %}
                 <li class="nav-item dropdown">
@@ -54,24 +64,24 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ path('user_view', { username : app.user.username}) }}">
-                            <img src="{{ asset('svg/person.svg') }}" /> &nbsp;
+                            <img src="{{ asset('svg/person.svg') }}"/> &nbsp;
                             Zobrazit profil
                         </a>
                         <a class="dropdown-item" href="{{ path('user_edit') }}">
-                            <img src="{{ asset('svg/settings.svg') }}" /> &nbsp;
+                            <img src="{{ asset('svg/settings.svg') }}"/> &nbsp;
                             Upravit profil
                         </a>
 
                         {% if is_granted("ROLE_CONTRIBUTOR") %}
                             <a class="dropdown-item" href="{{ path('admin') }}">
-                                <img src="{{ asset('svg/gear.svg') }}" /> &nbsp;
+                                <img src="{{ asset('svg/gear.svg') }}"/> &nbsp;
                                 Administrace
                             </a>
                         {% endif %}
 
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ path('fos_user_security_logout') }}">
-                            <img src="{{ asset('svg/x.svg') }}" /> &nbsp;
+                            <img src="{{ asset('svg/x.svg') }}"/> &nbsp;
                             Odhlásit
                         </a>
                     </div>
@@ -79,7 +89,7 @@
             {% else %}
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ path('fos_user_security_login') }}">
-                        <img src="{{ asset('svg/person.svg') }}" />
+                        <img src="{{ asset('svg/person.svg') }}"/>
                         Přihlásit
                     </a>
                 </li>
@@ -126,6 +136,9 @@
         </div>
     </footer>
 </div>
+
+<script async src="{{ asset('js/bootstrap3-typeahead.min.js') }}"></script>
+<script src="{{ asset('js/search.js') }}"></script>
 
 {% block javascripts %}{% endblock %}
 </body>

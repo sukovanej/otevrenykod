@@ -81,6 +81,19 @@ class ContentModel extends EntityManagerModel {
     }
 
     /**
+     * @param string $content
+     * @return Content[]|[]
+     */
+    public function search($value) {
+        $query = $this->getContentRepository()->createQueryBuilder("p")
+            ->where("p.title LIKE :value OR p.content LIKE :value")
+            ->setParameter("value", "%" . $value . "%")
+            ->getQuery();
+
+        return $query->getResult();
+    }
+
+    /**
      * @param $id
      * @return Content
      */
